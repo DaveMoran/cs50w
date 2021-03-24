@@ -1,22 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Descendant</title>
+    <title>Hover</title>
     <style>
-      a {
-        color: blue;
+      button {
+        width: 200px; 
+        height: 50px;
+        font-size: 24px;
+        background-color: green;
       }
 
-      a[href="https://facebook.com"] {
-        color: red;
+      button:hover {
+        background-color: orange;
       }
     </style>
   </head>
   <body>
-    <ul>
-      <li><a href="https://www.google.com">Google</a></li>
-      <li><a href="https://www.facebook.com">Facebook</a></li>
-      <li><a href="https://www.amazon.com">Amazon</a></li>
-    </ul>
+    <button>Click me</button>
   </body>
 </html>
