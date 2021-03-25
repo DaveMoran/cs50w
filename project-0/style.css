@@ -1,8 +1,14 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
 header {
   display: flex;
   justify-content: space-between;
-  padding: 0 30px;
-  margin: 30px auto;
+  align-items: center;
+  padding: 6px;
+  margin: 10px auto;
   width: 100%;
   box-sizing: border-box;
 }
@@ -19,11 +25,29 @@ header .primary-nav {
   margin-left: auto;
 }
 
+header .primary-nav li:last-child {
+  margin-right: 15px;
+}
+
+header .secondary-nav li:first-child {
+  margin-left: 15px;
+}
+
 header ul li {
   display: inline-block;
-  margin-right: 15px;
+  margin: 5px;
 }
 
 header ul li:last-child {
   margin-right: 0;
+}
+
+header ul li a {
+  padding: 5px;
+  text-decoration: none;
+  color: black;
+}
+
+header ul li a:hover {
+  text-decoration: underline;
 }
