@@ -1,0 +1,28 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 30px;
+  margin: 30px auto;
+  width: 100%;
+}
+
+header ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+header .primary-nav {
+  justify-self: flex-end;
+  margin-right: 0;
+  margin-left: auto;
+}
+
+header ul li {
+  display: inline-block;
+  margin-right: 15px;
+}
+
+header ul li:last-child {
+  margin-right: 0;
+}
