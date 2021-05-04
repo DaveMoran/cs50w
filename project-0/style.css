@@ -121,3 +121,16 @@ main form input[type="submit"]:hover {
   border: 1px solid #dadce0;
   color: #202124;
 }
+
+.advanced-search main{
+  display: initial;
+}
+
+.advanced-search section {
+  padding: 0 20px;
+}
+
+.advanced-search section .wrapper {
+  max-width: 1120px;
+  margin: 0 auto;
+}

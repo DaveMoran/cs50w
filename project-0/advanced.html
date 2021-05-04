@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="normalize.css">
         <link rel="stylesheet" href="style.css">
     </head>
-    <body>
+    <body class="advanced-search">
         <header>
             <nav class="secondary-nav">
                 <ul>
@@ -21,13 +21,15 @@
         </header>
         <main>
             <section class="page-title">
-                <h1>Advanced Search</h1>
+                <div class="wrapper">
+                    <h1>Advanced Search</h1>
+                </div>
             </section>
             <section class="advanced-form">
-                <div class="section-title">
-                    <h2>Find pages with...</h2>
-                </div>
-                <div class="form-fields">
+                <div class="wrapper">
+                    <div class="section-title">
+                        <h2>Find pages with...</h2>
+                    </div>
                     <form action="https://google.com/search">
                         <div class="input-group">
                             <label for="as_q">all these words:</label>
@@ -45,7 +47,6 @@
                             <label for="as_eq">none of these words:</label>
                             <input type="text" name="as_eq">
                         </div>
-                        
                         <div class="form-buttons">
                             <input type="submit" value="Google Search">
                         </div>
