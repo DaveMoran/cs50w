@@ -17,3 +17,6 @@ def entry(request, entry):
         })
     else:
         return render(request, "encyclopedia/no-entry.html")
+
+def search(request, results):
+    return render(request, "encyclopedia/search.html")
