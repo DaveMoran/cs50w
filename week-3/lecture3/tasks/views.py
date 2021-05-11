@@ -3,15 +3,16 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 
-tasks = ["foo", "bar", "baz"]
-
 class NewTaskForm(forms.Form):
   task = forms.CharField(label="New Task")
 
 # Create your views here.
 def index(request):
+  if "tasks" not in request.session:
+    request.sesssion["tasks"] = []
+
   return render(request, "tasks/index.html", {
-    "tasks": tasks
+    "tasks": request.sesssion["tasks"]
   })
 
 def add(request):
