@@ -1,6 +1,10 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 
+tasks = ["foo", "bar", "baz"]
+
 # Create your views here.
 def index(request):
-  return HttpResponse("Hello!")
+  return render(request, "tasks/index.html", {
+    "tasks": tasks
+  })
