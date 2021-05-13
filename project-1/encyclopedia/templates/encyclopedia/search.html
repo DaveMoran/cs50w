@@ -5,7 +5,16 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Search Results</h1>
-    <p>TODO</p>
+    {% if entries %}
+        <h1>Search Results</h1>
+        <ul>
+            {% for entry in entries %}
+                <li><a href="{% url 'encyclopedia:entry' entry %}">{{ entry }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h1>Search</h1>
+        <p>Use the searchbar on the left to see what's in the encyclopedia</p>
+    {% endif %}
 
 {% endblock %}

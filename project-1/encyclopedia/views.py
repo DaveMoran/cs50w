@@ -25,5 +25,17 @@ def search(request):
         query = request.POST["q"]
         if util.get_entry(query):
             return HttpResponseRedirect(reverse("encyclopedia:entry", args=(query,)))
-            
-    return render(request, "encyclopedia/search.html")
+        
+        entries = util.list_entries()
+        filtered_entries = []
+        for entry in entries:
+            if query in entry:
+                filtered_entries.append(entry)
+        
+        return render(request, "encyclopedia/search.html", {
+            "entries": filtered_entries
+        })
+        
+    return render(request, "encyclopedia/search.html", {
+        "entries": False
+    })
