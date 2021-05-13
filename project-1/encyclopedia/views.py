@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 from . import util
 
@@ -19,4 +21,9 @@ def entry(request, entry):
         return render(request, "encyclopedia/no-entry.html")
 
 def search(request):
+    if request.method == "POST":
+        query = request.POST["q"]
+        if util.get_entry(query):
+            return HttpResponseRedirect(reverse("encyclopedia:entry", args=(query,)))
+            
     return render(request, "encyclopedia/search.html")
