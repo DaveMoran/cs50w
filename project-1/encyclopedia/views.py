@@ -18,5 +18,5 @@ def entry(request, entry):
     else:
         return render(request, "encyclopedia/no-entry.html")
 
-def search(request, results):
+def search(request):
     return render(request, "encyclopedia/search.html")
