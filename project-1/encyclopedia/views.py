@@ -76,3 +76,10 @@ def new(request):
     return render(request, "encyclopedia/new.html", {
     "form": NewWikiForm
   })
+
+
+def edit(request):
+    return render(request, "encyclopedia/entry.html", {
+        "entry": util.get_entry(request.GET['title']),
+        "title": request.GET['title'].capitalize()
+    })

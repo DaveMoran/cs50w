@@ -6,5 +6,7 @@
 
 {% block body %}
     <h1>{{ title }}</h1>
+    <a href="{% url 'encyclopedia:edit' entry=title %}">Edit Entry</a>
+    <hr />
     {{ entry }}
 {% endblock %}
