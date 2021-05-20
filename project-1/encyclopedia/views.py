@@ -29,7 +29,7 @@ def search(request):
         entries = util.list_entries()
         filtered_entries = []
         for entry in entries:
-            if query in entry:
+            if query.upper() in entry.upper():
                 filtered_entries.append(entry)
         
         return render(request, "encyclopedia/search.html", {
