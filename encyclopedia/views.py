@@ -23,9 +23,9 @@ def index(request):
 
 
 def entry(request, entry):
-    markdowner = Markdown()
-    formatted = markdowner.convert(util.get_entry(entry))
     if util.get_entry(entry):
+        markdowner = Markdown()
+        formatted = markdowner.convert(util.get_entry(entry))
         return render(request, "encyclopedia/entry.html", {
             "entry": formatted,
             "title": entry.capitalize()
