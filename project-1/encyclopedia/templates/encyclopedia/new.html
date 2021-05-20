@@ -8,7 +8,7 @@
     <h1>New Page</h1>
     <form action="{% url 'encyclopedia:new' %}" method="post">
         {% csrf_token %}
-        {{ form }}
+        {{ form.as_p }}
         <input type="submit" value="Add New Page" />
       </form>
 

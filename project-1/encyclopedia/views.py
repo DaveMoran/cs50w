@@ -50,8 +50,22 @@ def new(request):
     if request.method == "POST":
         form = NewWikiForm(request.POST)
         if form.is_valid():
+            # Grab info from form
             entry_title = form.cleaned_data["title"]
             entry_content = form.cleaned_data["content"]
+
+            # Get existing entries
+            entries = util.list_entries()
+
+            # Check if entry already exists
+            for entry in entries:
+                if entry_title.upper() in entry.upper():
+                    msg = "Entry already exists. Please change title"
+                    form.add_error('title', msg)
+                    return render(request, 'encyclopedia/new.html', {
+                        "form": form
+                    })
+            # Save entry, bring user back to homepage
             util.save_entry(entry_title, entry_content)
             return HttpResponseRedirect(reverse("encyclopedia:index"))
         else:
