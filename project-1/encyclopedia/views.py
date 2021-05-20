@@ -67,7 +67,7 @@ def new(request):
                     })
             # Save entry, bring user back to homepage
             util.save_entry(entry_title, entry_content)
-            return HttpResponseRedirect(reverse("encyclopedia:index"))
+            return HttpResponseRedirect(reverse("encyclopedia:entry", args=(entry_title,)))
         else:
             return render(request, 'encyclopedia/new.html', {
                 "form": form
