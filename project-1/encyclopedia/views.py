@@ -79,11 +79,25 @@ def new(request):
 
 
 def edit(request, entry):
+    if request.method == "POST":
+        form = NewWikiForm(request.POST)
+        if form.is_valid():
+            # Grab info from form
+            entry_title = form.cleaned_data["title"]
+            entry_content = form.cleaned_data["content"]
+
+            # Save entry, bring user back to homepage
+            util.save_entry(entry_title, entry_content)
+            return HttpResponseRedirect(reverse("encyclopedia:entry", args=(entry_title,)))
+
     data = {
         "title": entry,
         'content': util.get_entry(entry)
     }
     f = NewWikiForm(data)
+    f.fields["title"].widget.required = False
+    f.fields["title"].widget.attrs['disabled'] = 'disabled'
+    
     return render(request, "encyclopedia/edit.html", {
         "form": f,
         "title": entry.capitalize()
