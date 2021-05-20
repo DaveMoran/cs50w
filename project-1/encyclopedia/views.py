@@ -4,8 +4,8 @@ from django.shortcuts import render
 from django.urls import reverse
 
 class NewWikiForm(forms.Form):
-  Title = forms.CharField(label="Title")
-  Content = forms.CharField(widget=forms.Textarea)
+  title = forms.CharField(label="Title")
+  content = forms.CharField(widget=forms.Textarea)
 
 from . import util
 
@@ -50,6 +50,9 @@ def new(request):
     if request.method == "POST":
         form = NewWikiForm(request.POST)
         if form.is_valid():
+            entry_title = form.cleaned_data["title"]
+            entry_content = form.cleaned_data["content"]
+            util.save_entry(entry_title, entry_content)
             return HttpResponseRedirect(reverse("encyclopedia:index"))
         else:
             return render(request, 'encyclopedia/new.html', {
