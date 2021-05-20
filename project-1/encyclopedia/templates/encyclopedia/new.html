@@ -6,5 +6,10 @@
 
 {% block body %}
     <h1>New Page</h1>
+    <form action="{% url 'encyclopedia:new' %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Add New Page" />
+      </form>
 
 {% endblock %}

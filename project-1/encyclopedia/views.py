@@ -1,6 +1,11 @@
-from django.shortcuts import render
+from django import forms
 from django.http import HttpResponseRedirect
+from django.shortcuts import render
 from django.urls import reverse
+
+class NewWikiForm(forms.Form):
+  Title = forms.CharField(label="Title")
+  Content = forms.CharField(widget=forms.Textarea)
 
 from . import util
 
@@ -42,4 +47,15 @@ def search(request):
 
 
 def new(request):
-    return render(request, "encyclopedia/new.html")
+    if request.method == "POST":
+        form = NewWikiForm(request.POST)
+        if form.is_valid():
+            return HttpResponseRedirect(reverse("encyclopedia:index"))
+        else:
+            return render(request, 'encyclopedia/new.html', {
+                "form": form
+            })
+      
+    return render(request, "encyclopedia/new.html", {
+    "form": NewWikiForm
+  })
