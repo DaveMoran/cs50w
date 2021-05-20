@@ -8,5 +8,7 @@
     <h1>{{ title }}</h1>
     <a href="{% url 'encyclopedia:edit' entry=title %}">Edit Entry</a>
     <hr />
-    {{ entry }}
+    {% autoescape off %}
+        {{ entry }}
+    {% endautoescape %}
 {% endblock %}

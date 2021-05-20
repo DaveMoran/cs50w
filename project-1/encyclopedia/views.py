@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.urls import reverse
 from random import seed
 from random import randint
+from markdown2 import Markdown
 
 class NewWikiForm(forms.Form):
   title = forms.CharField(label="Title")
@@ -22,9 +23,11 @@ def index(request):
 
 
 def entry(request, entry):
+    markdowner = Markdown()
+    formatted = markdowner.convert(util.get_entry(entry))
     if util.get_entry(entry):
         return render(request, "encyclopedia/entry.html", {
-            "entry": util.get_entry(entry),
+            "entry": formatted,
             "title": entry.capitalize()
         })
     else:
