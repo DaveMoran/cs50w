@@ -2,6 +2,8 @@ from django import forms
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
+from random import seed
+from random import randint
 
 class NewWikiForm(forms.Form):
   title = forms.CharField(label="Title")
@@ -101,3 +103,11 @@ def edit(request, entry):
         "form": f,
         "title": entry.capitalize()
     })
+
+
+def random(request):
+    entries = util.list_entries()
+    selection = randint(0, (len(entries) - 1))
+    entry = entries[selection]
+    
+    return HttpResponseRedirect(reverse("encyclopedia:entry", args=(entry,)))
