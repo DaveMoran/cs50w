@@ -39,3 +39,7 @@ def search(request):
     return render(request, "encyclopedia/search.html", {
         "entries": False
     })
+
+
+def new(request):
+    return render(request, "encyclopedia/new.html")
